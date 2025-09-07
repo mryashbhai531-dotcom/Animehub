@@ -7,25 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Base Styles */
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #151515 50%, #202020 100%);
-            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
         }
-
-        /* Hero Section */
         .hero {
             background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/hero-bg.jpg') no-repeat center center/cover;
-            height: 80vh; /* Slightly taller hero */
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            overflow: hidden; /* Ensure particles stay within */
         }
         .hero::before {
             content: '';
@@ -34,179 +29,93 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7); /* Darker overlay */
-            z-index: 0;
+            background: rgba(0, 0, 0, 0.6);
         }
         .hero-content {
             position: relative;
             z-index: 1;
-            animation: fadeInScale 1.5s ease-out forwards; /* New entrance animation */
         }
         .glow-text {
-            text-shadow: 0 0 25px rgba(255, 165, 0, 0.9), 0 0 40px rgba(255, 165, 0, 0.6); /* Stronger glow */
-            color: #fff; /* Ensure text is bright */
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
         }
-
-        /* Cards */
         .card {
-            background: rgba(25, 25, 25, 0.95); /* Darker, more opaque */
-            backdrop-filter: blur(18px); /* Stronger blur */
-            border: 1px solid rgba(255, 165, 0, 0.2); /* Subtle border */
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Initial shadow */
-            position: relative; /* For potential inner animations */
-            overflow: hidden;
+            background: rgba(34, 34, 34, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card:hover {
-            transform: translateY(-18px) scale(1.06); /* More pronounced lift */
-            border-color: #ff8c00; /* Brighter hover border */
-            box-shadow: 0 30px 60px rgba(255, 165, 0, 0.4), 0 0 30px rgba(255, 165, 0, 0.2); /* Enhanced hover shadow */
-            z-index: 10; /* Bring to front on hover */
+            transform: translateY(-15px) scale(1.05);
+            border-color: #ffa500;
+            box-shadow: 0 25px 50px rgba(255, 165, 0, 0.3);
         }
-        .card::before { /* Subtle gradient overlay on hover */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.05) 0%, rgba(255, 165, 0, 0) 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        /* Premium Buttons */
         .btn-premium {
-            background: linear-gradient(45deg, #ff8c00, #ffb347); /* Deeper orange */
-            color: #1a1a1a; /* Darker text for contrast */
-            border-radius: 15px; /* More rounded */
-            padding: 14px 32px; /* Larger padding */
-            font-size: 1.1rem; /* Slightly larger font */
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-            font-weight: 700; /* Bolder */
+            background: linear-gradient(45deg, #ffa500, #ffb347);
+            color: #000;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px; /* More spacing */
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4); /* Initial shadow */
+            letter-spacing: 1px;
         }
         .btn-premium:hover {
-            box-shadow: 0 0 35px rgba(255, 140, 0, 0.8), 0 0 15px rgba(255, 140, 0, 0.5); /* Intense glow */
-            transform: translateY(-5px) scale(1.02); /* More pronounced lift */
-            background: linear-gradient(45deg, #ffb347, #ff8c00); /* Reverse gradient on hover */
+            box-shadow: 0 0 25px rgba(255, 165, 0, 0.7);
+            transform: translateY(-2px);
         }
-
-        /* Navigation Buttons */
         .nav-btn {
-            background: rgba(50, 50, 50, 0.8); /* Darker grey */
-            color: #e0e0e0;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border-radius: 10px; /* Slightly more rounded */
-            padding: 12px 28px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: rgba(68, 68, 68, 0.8);
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
         .nav-btn:hover, .nav-btn.active {
-            background: linear-gradient(90deg, #ff8c00, #ffb347); /* Gradient for active/hover */
-            color: #1a1a1a;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+            background: rgba(255, 165, 0, 0.9);
+            color: #000;
+            transform: translateY(-2px);
         }
-
-        /* Admin Toggle Button */
         .admin-toggle {
-            background: rgba(255, 140, 0, 0.25); /* Deeper orange tint */
-            border: 1px solid rgba(255, 140, 0, 0.6);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
-            transition: all 0.4s ease;
-            color: #ffb347; /* Brighter icon */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 165, 0, 0.2);
+            border: 1px solid rgba(255, 165, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 100; /* Ensure it's above other content */
         }
         .admin-toggle:hover {
-            background: rgba(255, 140, 0, 0.6);
-            box-shadow: 0 0 25px rgba(255, 140, 0, 0.7), 0 0 10px rgba(255, 140, 0, 0.5);
-            transform: scale(1.1);
+            background: rgba(255, 165, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
         }
-
-        /* Animations */
         .fade-in {
-            animation: fadeIn 1s ease-out forwards;
+            animation: fadeIn 0.8s ease-in;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        .video-embed {
+            width: 100%;
+            height: 315px;
+            max-width: 560px;
+            border-radius: 12px;
         }
-
-        .slide-in-left {
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .slide-in-right {
-            animation: slideInRight 0.8s ease-out forwards;
-        }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Specific element styling */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-        }
-        h2 {
-            font-size: 3.5rem; /* Larger section titles */
-            margin-bottom: 2.5rem;
-        }
-        h3 {
-            font-size: 2.5rem;
-        }
-        h4 {
-            font-size: 1.8rem;
-        }
-
-        .video-embed, .image-display, .pdf-viewer {
-            border-radius: 15px; /* More rounded corners */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+        .image-display {
+            border-radius: 12px;
+            transition: transform 0.3s ease;
         }
         .image-display:hover {
-            transform: scale(1.03); /* Slightly more pronounced scale */
+            transform: scale(1.02);
         }
-
-        /* Admin Panel Specifics */
-        #admin-view {
-            background: rgba(0, 0, 0, 0.95); /* Even darker overlay */
-        }
-        #password-prompt, #admin-panel {
-            background: rgba(30, 30, 30, 0.98); /* Darker background */
-            border: 1px solid rgba(255, 140, 0, 0.3);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-        }
-        #password-input {
-            background: #2a2a2a;
-            border-color: #4a4a4a;
-            color: #e0e0e0;
-        }
-        .admin-panel input[type="text"],
-        .admin-panel input[type="url"],
-        .admin-panel select {
-            background: #2a2a2a;
-            border-color: #4a4a4a;
-            color: #e0e0e0;
-        }
-        .file-input-container input[type="file"] {
-            background-color: #2a2a2a;
-            border: 1px solid #4a4a4a;
-            color: #e0e0e0;
+        .pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -215,7 +124,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="text-6xl font-bold glow-text mb-4">Anime Hub</h1>
-            <p class="text-xl mb-8 text-gray-300">Your ultimate destination for anime, manga, manhwa, and movies</p>
+            <p class="text-xl mb-8 text-gray-300">Your ultimate destination for anime, manga, and manhwa</p>
             <a href="#main-content" class="btn-premium px-8 py-3">Explore Now</a>
         </div>
     </section>
@@ -226,7 +135,7 @@
             <button id="nav-anime" class="nav-btn px-8 py-3 text-lg font-semibold active">Anime</button>
             <button id="nav-manga" class="nav-btn px-8 py-3 text-lg font-semibold">Manga</button>
             <button id="nav-manhwa" class="nav-btn px-8 py-3 text-lg font-semibold">Manhwa</button>
-            <button id="nav-movies" class="nav-btn px-8 py-3 text-lg font-semibold">Movies</button>
+            <button id="nav-movie" class="nav-btn px-8 py-3 text-lg font-semibold">Movies</button>
         </div>
     </nav>
 
@@ -240,18 +149,18 @@
         <div id="anime-view">
             <h2 class="text-4xl font-bold text-orange-500 text-center mb-8 glow-text">Popular Anime</h2>
             <div id="anime-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-12">
-                <!-- Anime cards will be loaded here -->
+                <!-- Anime cards -->
             </div>
             <div id="anime-season-view" class="mb-12 hidden">
                 <h3 id="anime-selected" class="text-3xl font-bold text-orange-500 mb-6 glow-text"></h3>
                 <div id="anime-seasons-list" class="flex flex-wrap gap-4">
-                    <!-- Seasons will be loaded here -->
+                    <!-- Seasons -->
                 </div>
             </div>
             <div id="anime-videos-view" class="mb-12 hidden">
                 <h4 id="anime-selected-season" class="text-2xl font-bold text-orange-500 mb-6 glow-text"></h4>
                 <div id="anime-videos-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Videos will be loaded here -->
+                    <!-- Videos -->
                 </div>
             </div>
         </div>
@@ -260,18 +169,18 @@
         <div id="manga-view" class="hidden">
             <h2 class="text-4xl font-bold text-green-500 text-center mb-8 glow-text">Popular Manga</h2>
             <div id="manga-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-12">
-                <!-- Manga cards will be loaded here -->
+                <!-- Manga cards -->
             </div>
             <div id="manga-chapter-view" class="mb-12 hidden">
                 <h3 id="manga-selected" class="text-3xl font-bold text-green-500 mb-6 glow-text"></h3>
                 <div id="manga-chapters-list" class="flex flex-wrap gap-4">
-                    <!-- Chapters will be loaded here -->
+                    <!-- Chapters -->
                 </div>
             </div>
             <div id="manga-pages-view" class="mb-12 hidden">
                 <h4 id="manga-selected-chapter" class="text-2xl font-bold text-green-500 mb-6 glow-text"></h4>
                 <div id="manga-pages-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Pages will be loaded here -->
+                    <!-- Pages -->
                 </div>
             </div>
         </div>
@@ -280,32 +189,32 @@
         <div id="manhwa-view" class="hidden">
             <h2 class="text-4xl font-bold text-purple-500 text-center mb-8 glow-text">Popular Manhwa</h2>
             <div id="manhwa-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-12">
-                <!-- Manhwa cards will be loaded here -->
+                <!-- Manhwa cards -->
             </div>
             <div id="manhwa-chapter-view" class="mb-12 hidden">
                 <h3 id="manhwa-selected" class="text-3xl font-bold text-purple-500 mb-6 glow-text"></h3>
                 <div id="manhwa-chapters-list" class="flex flex-wrap gap-4">
-                    <!-- Chapters will be loaded here -->
+                    <!-- Chapters -->
                 </div>
             </div>
             <div id="manhwa-pages-view" class="mb-12 hidden">
                 <h4 id="manhwa-selected-chapter" class="text-2xl font-bold text-purple-500 mb-6 glow-text"></h4>
                 <div id="manhwa-pages-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Pages will be loaded here -->
+                    <!-- Pages -->
                 </div>
             </div>
         </div>
 
-        <!-- Movies View -->
-        <div id="movies-view" class="hidden">
+        <!-- Movie View -->
+        <div id="movie-view" class="hidden">
             <h2 class="text-4xl font-bold text-blue-500 text-center mb-8 glow-text">Popular Movies</h2>
-            <div id="movies-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-12">
+            <div id="movie-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-12">
                 <!-- Movie cards will be loaded here -->
             </div>
-            <div id="movie-videos-view" class="mb-12 hidden">
+            <div id="movie-details-view" class="mb-12 hidden">
                 <h3 id="movie-selected" class="text-3xl font-bold text-blue-500 mb-6 glow-text"></h3>
-                <div id="movie-videos-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Videos will be loaded here -->
+                <div id="movie-videos-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Trailer and Full Movie will be displayed here -->
                 </div>
             </div>
         </div>
@@ -339,10 +248,7 @@
                             <select id="select-anime-for-video" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600" onchange="updateAnimeSeasons()"></select>
                             <select id="select-anime-season-for-video" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3"></select>
                             <input type="url" id="new-video-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Video Link (URL)">
-                            <div class="file-input-container">
-                                <input type="file" id="upload-anime-video" accept="video/*">
-                                <button id="upload-anime-video-btn" class="btn-premium px-4 py-2">Upload</button>
-                            </div>
+                            <input type="file" id="new-video-file" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3">
                             <button id="add-video-btn" class="mt-3 px-6 py-2 btn-premium w-full">Add Video</button>
                         </div>
                     </div>
@@ -361,11 +267,8 @@
                         <div>
                             <select id="select-manga-for-page" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600" onchange="updateMangaChapters()"></select>
                             <select id="select-manga-chapter-for-page" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3"></select>
-                            <input type="url" id="new-page-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Page Link (Image/PDF URL)">
-                            <div class="file-input-container">
-                                <input type="file" id="upload-manga-page" accept="image/*,application/pdf">
-                                <button id="upload-manga-page-btn" class="btn-premium px-4 py-2">Upload</button>
-                            </div>
+                            <input type="url" id="new-page-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Page Link (URL)">
+                            <input type="file" id="new-page-file" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3">
                             <button id="add-page-btn" class="mt-3 px-6 py-2 btn-premium w-full">Add Page/PDF</button>
                         </div>
                     </div>
@@ -384,31 +287,30 @@
                         <div>
                             <select id="select-manhwa-for-page" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600" onchange="updateManhwaChapters()"></select>
                             <select id="select-manhwa-chapter-for-page" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3"></select>
-                            <input type="url" id="new-manhwa-page-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Page Link (Image/PDF URL)">
-                            <div class="file-input-container">
-                                <input type="file" id="upload-manhwa-page" accept="image/*,application/pdf">
-                                <button id="upload-manhwa-page-btn" class="btn-premium px-4 py-2">Upload</button>
-                            </div>
+                            <input type="url" id="new-manhwa-page-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Page Link (URL)">
+                            <input type="file" id="new-manhwa-page-file" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3">
                             <button id="add-manhwa-page-btn" class="mt-3 px-6 py-2 btn-premium w-full">Add Page/PDF</button>
                         </div>
                     </div>
-                    <!-- Movies Section -->
+                    <!-- Movie Section -->
                     <div class="card p-6 rounded-xl">
                         <h4 class="text-xl font-semibold mb-4 text-blue-500">Movies</h4>
                         <div class="mb-4">
-                            <input type="text" id="new-movie-name" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600" placeholder="Movie Title">
+                            <input type="text" id="new-movie-name" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600" placeholder="Movie Name">
+                            <input type="url" id="new-movie-poster" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Poster Image Link (URL)">
+                            <input type="file" id="new-movie-poster-file" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3">
                             <button id="add-movie-btn" class="mt-3 px-6 py-2 btn-premium w-full">Add Movie</button>
                         </div>
                         <div>
                             <select id="select-movie-for-video" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600"></select>
-                            <input type="url" id="new-movie-video-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Movie Video Link (URL)">
-                            <div class="file-input-container">
-                                <input type="file" id="upload-movie-video" accept="video/*">
-                                <button id="upload-movie-video-btn" class="btn-premium px-4 py-2">Upload</button>
-                            </div>
-                            <button id="add-movie-video-btn" class="mt-3 px-6 py-2 btn-premium w-full">Add Movie Video</button>
+                            <input type="url" id="new-movie-trailer-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Trailer Link (URL)">
+                            <input type="file" id="new-movie-trailer-file" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3">
+                            <input type="url" id="new-full-movie-link" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3" placeholder="Full Movie Link (URL)">
+                            <input type="file" id="new-full-movie-file" class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 mt-3">
+                            <button id="add-movie-video-btn" class="mt-3 px-6 py-2 btn-premium w-full">Add Trailer/Movie</button>
                         </div>
                     </div>
+                    <!-- Removed the generic "Upload Files" section as it's now integrated -->
                 </div>
                 <button id="back-to-user" class="mt-8 px-8 py-3 btn-premium block mx-auto">Back to User</button>
             </div>
@@ -456,14 +358,18 @@
         ];
         let movies = JSON.parse(localStorage.getItem('movies')) || [
             {
-                id: 'interstellar',
-                name: 'Interstellar',
-                videos: ['https://www.youtube.com/watch?v=zSWdZVtXT7E']
+                id: 'your-name',
+                name: 'Your Name.',
+                poster: 'https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.jpg',
+                trailer: 'https://www.youtube.com/watch?v=xU47nhruN2Q',
+                fullMovie: '' // Placeholder for full movie link
             },
             {
-                id: 'inception',
-                name: 'Inception',
-                videos: ['https://www.youtube.com/watch?v=YoHD9XEInc0']
+                id: 'spirited-away',
+                name: 'Spirited Away',
+                poster: 'https://upload.wikimedia.org/wikipedia/en/d/df/Spirited_Away_poster.png',
+                trailer: 'https://www.youtube.com/watch?v=ByXuk9QqxK8',
+                fullMovie: ''
             }
         ];
 
@@ -471,24 +377,24 @@
         const animeView = document.getElementById('anime-view');
         const mangaView = document.getElementById('manga-view');
         const manhwaView = document.getElementById('manhwa-view');
-        const moviesView = document.getElementById('movies-view');
+        const movieView = document.getElementById('movie-view'); // New
         const adminView = document.getElementById('admin-view');
 
         // Navigation
         const navAnime = document.getElementById('nav-anime');
         const navManga = document.getElementById('nav-manga');
         const navManhwa = document.getElementById('nav-manhwa');
-        const navMovies = document.getElementById('nav-movies');
+        const navMovie = document.getElementById('nav-movie'); // New
 
         navAnime.onclick = () => showView('anime');
         navManga.onclick = () => showView('manga');
         navManhwa.onclick = () => showView('manhwa');
-        navMovies.onclick = () => showView('movies');
+        navMovie.onclick = () => showView('movie'); // New
 
         function showView(view) {
-            [animeView, mangaView, manhwaView, moviesView].forEach(v => v.classList.add('hidden'));
+            [animeView, mangaView, manhwaView, movieView].forEach(v => v.classList.add('hidden')); // Added movieView
             document.getElementById(`${view}-view`).classList.remove('hidden');
-            [navAnime, navManga, navManhwa, navMovies].forEach(nav => nav.classList.remove('active'));
+            [navAnime, navManga, navManhwa, navMovie].forEach(nav => nav.classList.remove('active')); // Added navMovie
             document.getElementById(`nav-${view}`).classList.add('active');
             // Hide specific sub-views when switching main views
             document.getElementById('anime-season-view').classList.add('hidden');
@@ -497,7 +403,7 @@
             document.getElementById('manga-pages-view').classList.add('hidden');
             document.getElementById('manhwa-chapter-view').classList.add('hidden');
             document.getElementById('manhwa-pages-view').classList.add('hidden');
-            document.getElementById('movie-videos-view').classList.add('hidden');
+            document.getElementById('movie-details-view').classList.add('hidden'); // New
         }
 
         // Load functions
@@ -508,7 +414,7 @@
                 const card = document.createElement('div');
                 card.className = 'card p-4 rounded-xl cursor-pointer';
                 card.innerHTML = `
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f3c5ae90-e4a7-4539-ae9d-f59fc425b337.png" alt="Anime poster for ${anime.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Anime+Poster';this.alt='Placeholder anime poster.'">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f3c5ae90-e4a7-4539-ae9d-f59fc425b337.png" alt="Anime poster for ${anime.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d496ea55-a5d5-469d-be61-a5ef672e9d7d.png';this.alt='Anime poster for ${anime.name}, depicting epic scenes with warriors, monsters, and intricate backgrounds in a dark fantasy world, high-resolution image with vivid colors and dynamic action poses'">
                     <h3 class="text-lg font-bold">${anime.name}</h3>
                 `;
                 card.onclick = () => showAnimeSeasons(index);
@@ -558,10 +464,7 @@
                 } else if (video.includes('youtu.be/')) {
                     const videoId = video.split('youtu.be/')[1].split('?')[0];
                     embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-embed"></iframe>`;
-                } else if (video.startsWith('data:video/')) { // Handle Data URL for video
-                    embedHtml = `<video controls class="video-embed"><source src="${video}" type="video/mp4"></video>`;
-                }
-                else {
+                } else {
                     embedHtml = `<a href="${video}" target="_blank" class="btn-premium px-4 py-2 inline-block">Watch Episode</a>`;
                 }
 
@@ -581,7 +484,7 @@
                 const card = document.createElement('div');
                 card.className = 'card p-4 rounded-xl cursor-pointer';
                 card.innerHTML = `
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3820a9b2-d628-424b-98bf-ed99270b9b7d.png" alt="Manga cover for ${manga.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Manga+Cover';this.alt='Placeholder manga cover.'">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3820a9b2-d628-424b-98bf-ed99270b9b7d.png" alt="Manga cover for ${manga.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/01b580ca-5260-403e-81da-1c85cd15aadd.png';this.alt='Manga cover for ${manga.name}, featuring vibrant illustrations of characters and story elements in a classic manga style, detailed artwork with dynamic poses'">
                     <h3 class="text-lg font-bold">${manga.name}</h3>
                 `;
                 card.onclick = () => showMangaChapters(index);
@@ -623,7 +526,7 @@
             chapter.pages.forEach((page, index) => {
                 const pageDiv = document.createElement('div');
                 pageDiv.className = 'card p-4 rounded-xl';
-                const isPdf = page.toLowerCase().endsWith('.pdf') || page.startsWith('data:application/pdf');
+                const isPdf = page.toLowerCase().endsWith('.pdf');
                 pageDiv.innerHTML = `
                     <h5 class="text-lg mb-2">Page ${index + 1}</h5>
                     ${isPdf ? `<iframe src="${page}" class="pdf-viewer"></iframe>` : `<img src="${page}" alt="Page ${index + 1}" class="w-full h-64 object-cover image-display" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Image+Not+Found';this.alt='Placeholder image indicating the original image could not be loaded.'">`}
@@ -641,7 +544,7 @@
                 const card = document.createElement('div');
                 card.className = 'card p-4 rounded-xl cursor-pointer';
                 card.innerHTML = `
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ddb64fc6-023c-434b-a401-0241c91e1e0a.png" alt="Manhwa cover for ${manhwa.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Manhwa+Cover';this.alt='Placeholder manhwa cover.'">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ddb64fc6-023c-434b-a401-0241c91e1e0a.png" alt="Manhwa cover for ${manhwa.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f03855fc-2a10-42f3-8249-806f9bd4f0be.png';this.alt='Manhwa cover for ${manhwa.name}, displaying colorful illustrations with characters and plot motifs in manhwa art style, high-quality graphics with expressive figures'">
                     <h3 class="text-lg font-bold">${manhwa.name}</h3>
                 `;
                 card.onclick = () => showManhwaChapters(index);
@@ -683,7 +586,7 @@
             chapter.pages.forEach((page, index) => {
                 const pageDiv = document.createElement('div');
                 pageDiv.className = 'card p-4 rounded-xl';
-                const isPdf = page.toLowerCase().endsWith('.pdf') || page.startsWith('data:application/pdf');
+                const isPdf = page.toLowerCase().endsWith('.pdf');
                 pageDiv.innerHTML = `
                     <h5 class="text-lg mb-2">Page ${index + 1}</h5>
                     ${isPdf ? `<iframe src="${page}" class="pdf-viewer"></iframe>` : `<img src="${page}" alt="Page ${index + 1}" class="w-full h-64 object-cover image-display" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Image+Not+Found';this.alt='Placeholder image indicating the original image could not be loaded.'">`}
@@ -695,54 +598,68 @@
 
         // Movies
         function loadMovies() {
-            const grid = document.getElementById('movies-grid');
+            const grid = document.getElementById('movie-grid');
             grid.innerHTML = '';
             movies.forEach((movie, index) => {
                 const card = document.createElement('div');
                 card.className = 'card p-4 rounded-xl cursor-pointer';
                 card.innerHTML = `
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/movie-placeholder.jpg" alt="Movie poster for ${movie.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Movie+Poster';this.alt='Placeholder movie poster.'">
+                    <img src="${movie.poster}" alt="Movie poster for ${movie.name}" class="w-full h-48 object-cover rounded-lg mb-3" onerror="this.src='https://placehold.co/300x400/666/e5e5e5.png?text=Movie+Poster';this.alt='Placeholder movie poster.'">
                     <h3 class="text-lg font-bold">${movie.name}</h3>
                 `;
-                card.onclick = () => showMovieVideos(index);
+                card.onclick = () => showMovieDetails(index);
                 grid.appendChild(card);
             });
         }
 
-        function showMovieVideos(movieIndex) {
+        function showMovieDetails(movieIndex) {
             const movie = movies[movieIndex];
-            document.getElementById('movie-videos-view').classList.remove('hidden');
-            document.getElementById('movie-selected').textContent = `${movie.name} - Videos`;
+            document.getElementById('movie-details-view').classList.remove('hidden');
+            document.getElementById('movie-selected').textContent = `${movie.name}`;
             const videosList = document.getElementById('movie-videos-list');
             videosList.innerHTML = '';
-            if (movie.videos.length === 0) {
-                videosList.innerHTML = '<p class="text-gray-400">No videos available for this movie.</p>';
-                return;
-            }
-            movie.videos.forEach((video, index) => {
-                const videoDiv = document.createElement('div');
-                videoDiv.className = 'card p-4 rounded-xl';
-                let embedHtml = '';
-                if (video.includes('youtube.com/watch?v=')) {
-                    const videoId = video.split('v=')[1].split('&')[0];
-                    embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-embed"></iframe>`;
-                } else if (video.includes('youtu.be/')) {
-                    const videoId = video.split('youtu.be/')[1].split('?')[0];
-                    embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-embed"></iframe>`;
-                } else if (video.startsWith('data:video/')) { // Handle Data URL for video
-                    embedHtml = `<video controls class="video-embed"><source src="${video}" type="video/mp4"></video>`;
-                }
-                else {
-                    embedHtml = `<a href="${video}" target="_blank" class="btn-premium px-4 py-2 inline-block">Watch Movie</a>`;
-                }
 
-                videoDiv.innerHTML = `
-                    <h5 class="text-lg mb-2">Video ${index + 1}</h5>
-                    ${embedHtml}
+            // Trailer
+            if (movie.trailer) {
+                const trailerDiv = document.createElement('div');
+                trailerDiv.className = 'card p-4 rounded-xl';
+                let trailerEmbedHtml = '';
+                if (movie.trailer.includes('youtube.com/watch?v=')) {
+                    const videoId = movie.trailer.split('v=')[1].split('&')[0];
+                    trailerEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-embed"></iframe>`;
+                } else if (movie.trailer.includes('youtu.be/')) {
+                    const videoId = movie.trailer.split('youtu.be/')[1].split('?')[0];
+                    trailerEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-embed"></iframe>`;
+                } else {
+                    trailerEmbedHtml = `<a href="${movie.trailer}" target="_blank" class="btn-premium px-4 py-2 inline-block">Watch Trailer</a>`;
+                }
+                trailerDiv.innerHTML = `
+                    <h5 class="text-lg mb-2">Trailer</h5>
+                    ${trailerEmbedHtml}
                 `;
-                videosList.appendChild(videoDiv);
-            });
+                videosList.appendChild(trailerDiv);
+            }
+
+            // Full Movie
+            if (movie.fullMovie) {
+                const fullMovieDiv = document.createElement('div');
+                fullMovieDiv.className = 'card p-4 rounded-xl';
+                fullMovieDiv.innerHTML = `
+                    <h5 class="text-lg mb-2">Full Movie</h5>
+                    <video controls class="video-embed">
+                        <source src="${movie.fullMovie}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <a href="${movie.fullMovie}" target="_blank" class="btn-premium px-4 py-2 inline-block mt-2">Download Movie</a>
+                `;
+                videosList.appendChild(fullMovieDiv);
+            }
+
+            if (!movie.trailer && !movie.fullMovie) {
+                videosList.innerHTML = '<p class="text-gray-400">No videos available for this movie.</p>';
+            }
         }
+
 
         // Admin functions
         document.getElementById('admin-toggle').onclick = () => {
@@ -826,7 +743,7 @@
             });
             updateManhwaChapters(); // Initialize chapter dropdown for page
 
-            // Movies Selects
+            // Movie Selects
             const selectMovieForVideo = document.getElementById('select-movie-for-video');
             selectMovieForVideo.innerHTML = '<option value="">Select Movie</option>';
             movies.forEach(movie => {
@@ -891,16 +808,37 @@
             }
         }
 
-        // Helper function to read file as Data URL
-        function readFileAsDataURL(file, callback) {
+        /**
+         * Handles file upload to the backend.
+         * @param {File} file The file to upload.
+         * @returns {Promise<string>} A promise that resolves with the URL of the uploaded file.
+         */
+        async function uploadFile(file) {
             if (!file) {
-                callback(null);
-                return;
+                return null; // No file to upload
             }
-            const reader = new FileReader();
-            reader.onload = (e) => callback(e.target.result);
-            reader.onerror = () => callback(null);
-            reader.readAsDataURL(file);
+
+            const formData = new FormData();
+            formData.append('mediaFile', file); // 'mediaFile' should match the name expected by your backend
+
+            try {
+                const response = await fetch('http://localhost:3000/upload', { // Your backend upload URL
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Upload failed: ${response.status} ${response.statusText} - ${errorText}`);
+                }
+
+                const data = await response.json();
+                return data.fileUrl;
+            } catch (error) {
+                console.error('File upload error:', error);
+                alert('File upload failed: ' + error.message);
+                return null;
+            }
         }
 
         // Add event listeners for admin buttons
@@ -932,39 +870,45 @@
             }
         };
 
-        document.getElementById('add-video-btn').onclick = () => {
+        document.getElementById('add-video-btn').onclick = async () => {
             const animeId = document.getElementById('select-anime-for-video').value;
             const seasonId = document.getElementById('select-anime-season-for-video').value;
-            const videoLink = document.getElementById('new-video-link').value.trim();
-            const videoFile = document.getElementById('upload-anime-video').files[0];
+            let videoLink = document.getElementById('new-video-link').value.trim();
+            const videoFile = document.getElementById('new-video-file').files[0];
 
-            if (animeId && seasonId && (videoLink || videoFile)) {
+            if (!animeId || !seasonId) {
+                alert('Please select an anime and season.');
+                return;
+            }
+
+            if (!videoLink && !videoFile) {
+                alert('Please enter a video link (URL) or select a video file to upload.');
+                return;
+            }
+
+            if (videoFile) {
+                const uploadedUrl = await uploadFile(videoFile);
+                if (uploadedUrl) {
+                    videoLink = uploadedUrl; // Use the uploaded file's URL
+                } else {
+                    return; // Upload failed, stop execution
+                }
+            }
+
+            if (videoLink) {
                 const anime = animes.find(a => a.id === animeId);
                 if (anime) {
                     const season = anime.seasons.find(s => s.id === seasonId);
                     if (season) {
-                        if (videoFile) {
-                            readFileAsDataURL(videoFile, (dataUrl) => {
-                                if (dataUrl) {
-                                    season.videos.push(dataUrl);
-                                    document.getElementById('new-video-link').value = '';
-                                    document.getElementById('upload-anime-video').value = '';
-                                    saveAndReload();
-                                    alert('Video added successfully from file!');
-                                } else {
-                                    alert('Failed to read video file.');
-                                }
-                            });
-                        } else {
-                            season.videos.push(videoLink);
-                            document.getElementById('new-video-link').value = '';
-                            saveAndReload();
-                            alert('Video added successfully from URL!');
-                        }
+                        season.videos.push(videoLink);
+                        document.getElementById('new-video-link').value = '';
+                        document.getElementById('new-video-file').value = ''; // Clear file input
+                        saveAndReload();
+                        alert('Video added successfully!');
                     }
                 }
             } else {
-                alert('Please select an anime, season, and enter a video link (URL) OR upload a video file.');
+                alert('No video link available after upload or input.');
             }
         };
 
@@ -996,39 +940,45 @@
             }
         };
 
-        document.getElementById('add-page-btn').onclick = () => {
+        document.getElementById('add-page-btn').onclick = async () => {
             const mangaId = document.getElementById('select-manga-for-page').value;
             const chapterId = document.getElementById('select-manga-chapter-for-page').value;
-            const pageLink = document.getElementById('new-page-link').value.trim();
-            const pageFile = document.getElementById('upload-manga-page').files[0];
+            let pageLink = document.getElementById('new-page-link').value.trim();
+            const pageFile = document.getElementById('new-page-file').files[0];
 
-            if (mangaId && chapterId && (pageLink || pageFile)) {
+            if (!mangaId || !chapterId) {
+                alert('Please select a manga and chapter.');
+                return;
+            }
+
+            if (!pageLink && !pageFile) {
+                alert('Please enter a page link (URL) or select a page file to upload.');
+                return;
+            }
+
+            if (pageFile) {
+                const uploadedUrl = await uploadFile(pageFile);
+                if (uploadedUrl) {
+                    pageLink = uploadedUrl; // Use the uploaded file's URL
+                } else {
+                    return; // Upload failed, stop execution
+                }
+            }
+
+            if (pageLink) {
                 const manga = mangas.find(m => m.id === mangaId);
                 if (manga) {
                     const chapter = manga.chapters.find(c => c.id === chapterId);
                     if (chapter) {
-                        if (pageFile) {
-                            readFileAsDataURL(pageFile, (dataUrl) => {
-                                if (dataUrl) {
-                                    chapter.pages.push(dataUrl);
-                                    document.getElementById('new-page-link').value = '';
-                                    document.getElementById('upload-manga-page').value = '';
-                                    saveAndReload();
-                                    alert('Page/PDF added successfully from file!');
-                                } else {
-                                    alert('Failed to read page/PDF file.');
-                                }
-                            });
-                        } else {
-                            chapter.pages.push(pageLink);
-                            document.getElementById('new-page-link').value = '';
-                            saveAndReload();
-                            alert('Page/PDF added successfully from URL!');
-                        }
+                        chapter.pages.push(pageLink);
+                        document.getElementById('new-page-link').value = '';
+                        document.getElementById('new-page-file').value = ''; // Clear file input
+                        saveAndReload();
+                        alert('Page/PDF added successfully!');
                     }
                 }
             } else {
-                alert('Please select a manga, chapter, and enter a page link (URL) OR upload a page/PDF file.');
+                alert('No page link available after upload or input.');
             }
         };
 
@@ -1060,83 +1010,136 @@
             }
         };
 
-        document.getElementById('add-manhwa-page-btn').onclick = () => {
+        document.getElementById('add-manhwa-page-btn').onclick = async () => {
             const manhwaId = document.getElementById('select-manhwa-for-page').value;
             const chapterId = document.getElementById('select-manhwa-chapter-for-page').value;
-            const pageLink = document.getElementById('new-manhwa-page-link').value.trim();
-            const pageFile = document.getElementById('upload-manhwa-page').files[0];
+            let pageLink = document.getElementById('new-manhwa-page-link').value.trim();
+            const pageFile = document.getElementById('new-manhwa-page-file').files[0];
 
-            if (manhwaId && chapterId && (pageLink || pageFile)) {
+            if (!manhwaId || !chapterId) {
+                alert('Please select a manhwa and chapter.');
+                return;
+            }
+
+            if (!pageLink && !pageFile) {
+                alert('Please enter a page link (URL) or select a page file to upload.');
+                return;
+            }
+
+            if (pageFile) {
+                const uploadedUrl = await uploadFile(pageFile);
+                if (uploadedUrl) {
+                    pageLink = uploadedUrl; // Use the uploaded file's URL
+                } else {
+                    return; // Upload failed, stop execution
+                }
+            }
+
+            if (pageLink) {
                 const manhwa = manhwas.find(m => m.id === manhwaId);
                 if (manhwa) {
                     const chapter = manhwa.chapters.find(c => c.id === chapterId);
                     if (chapter) {
-                        if (pageFile) {
-                            readFileAsDataURL(pageFile, (dataUrl) => {
-                                if (dataUrl) {
-                                    chapter.pages.push(dataUrl);
-                                    document.getElementById('new-manhwa-page-link').value = '';
-                                    document.getElementById('upload-manhwa-page').value = '';
-                                    saveAndReload();
-                                    alert('Page/PDF added successfully from file!');
-                                } else {
-                                    alert('Failed to read page/PDF file.');
-                                }
-                            });
-                        } else {
-                            chapter.pages.push(pageLink);
-                            document.getElementById('new-manhwa-page-link').value = '';
-                            saveAndReload();
-                            alert('Page/PDF added successfully from URL!');
-                        }
+                        chapter.pages.push(pageLink);
+                        document.getElementById('new-manhwa-page-link').value = '';
+                        document.getElementById('new-manhwa-page-file').value = ''; // Clear file input
+                        saveAndReload();
+                        alert('Page/PDF added successfully!');
                     }
                 }
             } else {
-                alert('Please select a manhwa, chapter, and enter a page link (URL) OR upload a page/PDF file.');
+                alert('No page link available after upload or input.');
             }
         };
 
-        document.getElementById('add-movie-btn').onclick = () => {
+        // Movie Admin Buttons
+        document.getElementById('add-movie-btn').onclick = async () => {
             const name = document.getElementById('new-movie-name').value.trim();
-            if (name) {
-                movies.push({ id: 'movie-' + Date.now(), name: name, videos: [] });
+            let poster = document.getElementById('new-movie-poster').value.trim();
+            const posterFile = document.getElementById('new-movie-poster-file').files[0];
+
+            if (!name) {
+                alert('Please enter movie name.');
+                return;
+            }
+
+            if (!poster && !posterFile) {
+                alert('Please enter a poster image link (URL) or select a poster file to upload.');
+                return;
+            }
+
+            if (posterFile) {
+                const uploadedUrl = await uploadFile(posterFile);
+                if (uploadedUrl) {
+                    poster = uploadedUrl; // Use the uploaded file's URL
+                } else {
+                    return; // Upload failed, stop execution
+                }
+            }
+
+            if (name && poster) {
+                movies.push({ id: 'movie-' + Date.now(), name: name, poster: poster, trailer: '', fullMovie: '' });
                 document.getElementById('new-movie-name').value = '';
+                document.getElementById('new-movie-poster').value = '';
+                document.getElementById('new-movie-poster-file').value = ''; // Clear file input
                 saveAndReload();
                 alert('Movie added successfully!');
             } else {
-                alert('Please enter a movie title.');
+                alert('No poster link available after upload or input.');
             }
         };
 
-        document.getElementById('add-movie-video-btn').onclick = () => {
+        document.getElementById('add-movie-video-btn').onclick = async () => {
             const movieId = document.getElementById('select-movie-for-video').value;
-            const videoLink = document.getElementById('new-movie-video-link').value.trim();
-            const videoFile = document.getElementById('upload-movie-video').files[0];
+            let trailerLink = document.getElementById('new-movie-trailer-link').value.trim();
+            const trailerFile = document.getElementById('new-movie-trailer-file').files[0];
+            let fullMovieLink = document.getElementById('new-full-movie-link').value.trim();
+            const fullMovieFile = document.getElementById('new-full-movie-file').files[0];
 
-            if (movieId && (videoLink || videoFile)) {
+            if (!movieId) {
+                alert('Please select a movie.');
+                return;
+            }
+
+            if (!trailerLink && !trailerFile && !fullMovieLink && !fullMovieFile) {
+                alert('Please enter at least one video link (URL) or select a video file to upload.');
+                return;
+            }
+
+            // Upload trailer file if selected
+            if (trailerFile) {
+                const uploadedUrl = await uploadFile(trailerFile);
+                if (uploadedUrl) {
+                    trailerLink = uploadedUrl;
+                } else {
+                    return; // Upload failed
+                }
+            }
+
+            // Upload full movie file if selected
+            if (fullMovieFile) {
+                const uploadedUrl = await uploadFile(fullMovieFile);
+                if (uploadedUrl) {
+                    fullMovieLink = uploadedUrl;
+                } else {
+                    return; // Upload failed
+                }
+            }
+
+            if (movieId && (trailerLink || fullMovieLink)) {
                 const movie = movies.find(m => m.id === movieId);
                 if (movie) {
-                    if (videoFile) {
-                        readFileAsDataURL(videoFile, (dataUrl) => {
-                            if (dataUrl) {
-                                movie.videos.push(dataUrl);
-                                document.getElementById('new-movie-video-link').value = '';
-                                document.getElementById('upload-movie-video').value = '';
-                                saveAndReload();
-                                alert('Movie video added successfully from file!');
-                            } else {
-                                alert('Failed to read movie video file.');
-                            }
-                        });
-                    } else {
-                        movie.videos.push(videoLink);
-                        document.getElementById('new-movie-video-link').value = '';
-                        saveAndReload();
-                        alert('Movie video added successfully from URL!');
-                    }
+                    if (trailerLink) movie.trailer = trailerLink;
+                    if (fullMovieLink) movie.fullMovie = fullMovieLink;
+                    document.getElementById('new-movie-trailer-link').value = '';
+                    document.getElementById('new-movie-trailer-file').value = ''; // Clear file input
+                    document.getElementById('new-full-movie-link').value = '';
+                    document.getElementById('new-full-movie-file').value = ''; // Clear file input
+                    saveAndReload();
+                    alert('Movie video links updated successfully!');
                 }
             } else {
-                alert('Please select a movie and enter a video link (URL) OR upload a video file.');
+                alert('No video links available after upload or input.');
             }
         };
 
@@ -1145,11 +1148,11 @@
             localStorage.setItem('animes', JSON.stringify(animes));
             localStorage.setItem('mangas', JSON.stringify(mangas));
             localStorage.setItem('manhwas', JSON.stringify(manhwas));
-            localStorage.setItem('movies', JSON.stringify(movies));
+            localStorage.setItem('movies', JSON.stringify(movies)); // New
             loadAnimes();
             loadMangas();
             loadManhwas();
-            loadMovies();
+            loadMovies(); // New
             loadAdminLists(); // Reload admin lists to reflect new additions
         }
 
